@@ -1,0 +1,41 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Liste des Invités{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Liste des Invitations</h4>
+        <p><strong>Vous avez {{ nbrInvitations }} invitations!</strong></p>
+        </table> <br/>
+        <table id="liste">
+            <tr>
+                <th>Date de l'invitation</th>
+                <th>Descriptions</th>
+                <th>Etat</th>
+                <th>Action</th>
+            </tr>
+            {% for i in invitations %}
+                <tr>
+                    <td>{{ i.dateInvitation|date('Y-m-d') }}</td>
+                    <td>{{ i.idHote.username }} vous invite à rejoindre son sujet "{{ i.idSujet.titre }}" de thème {{ i.idSujet.theme }}</td>
+                    <td>{{ i.etat }}</td>
+                    <td>
+                        <ul>
+                            <li><a href="{{ path('accepter_invitation', {'id' : i.id}) }}" >Accepter</a></li>
+                            <li><a href="{{ path('refuser_invitation', {'id' : i.id}) }}" >Ignorer</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div style="margin-left: 75%;">{{ knp_pagination_render(invitations) }}</div>
+    </div>
+
+{% endblock %}

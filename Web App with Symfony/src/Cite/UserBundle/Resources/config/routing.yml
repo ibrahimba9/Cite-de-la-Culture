@@ -1,0 +1,83 @@
+cite_user_homepage:
+    path:     /
+    defaults: { _controller: CiteUserBundle:Default:index }
+
+profil_forum_sujets:
+    path: /forum/mesSujets
+    defaults: { _controller: CiteUserBundle:Forum:mesSujets }
+
+profil_forum_modifier:
+    path: /forum/edit/{id}
+    defaults: { _controller: CiteUserBundle:Forum:modifierMonSujet }
+
+profil_forum_supprimer:
+    path: /forum/delete/{id}
+    defaults: { _controller: CiteUserBundle:Forum:supprimerMonSujet }
+
+profil_forum_confirm_supprimer:
+    path: /forum/confirmDelete/{id}
+    defaults: { _controller: CiteUserBundle:Forum:confirmSupprimerMonSujet }
+
+profil_forum_notifications:
+    path: /forum/notifications
+    defaults: { _controller: CiteUserBundle:Forum:notifications }
+
+profil_forum_suivi:
+    path: /forum/suivi
+    defaults: { _controller: CiteUserBundle:Forum:suivi }
+
+profil_forum_historique:
+    path: /forum/historique
+    defaults: { _controller: CiteUserBundle:Forum:historique }
+
+profil_forum_inviter:
+    path: /forum/inviter/{idSujet}
+    defaults: { _controller: CiteUserBundle:Forum:inviter }
+
+profil_sujet_inviter:
+    path: /forum/inviterAbonne/{idAbonne}/{idSujet}
+    defaults: { _controller: CiteUserBundle:Forum:inviterAbonne }
+
+profil_suivi_abandonner:
+    path: /forum/abandonner/{id}
+    defaults: { _controller: CiteUserBundle:Forum:abandonner }
+
+profil_lister_invites:
+    path: /forum/listeInvites/{id}
+    defaults: { _controller: CiteUserBundle:Forum:listerInvites }
+
+profil_invitation_annuler:
+    path: /forum/annulerInvitation/{id}
+    defaults: { _controller: CiteUserBundle:Forum:annulerInvitation }
+
+profil_invitation_confirm_annuler:
+    path: /forum/confirmAnnulerInvitation/{id}
+    defaults: { _controller: CiteUserBundle:Forum:confirmAnnulerInvitation }
+
+profil_lister_abonnes_sujet:
+    path: /forum/listerAbonnesSujet/{id}
+    defaults: { _controller: CiteUserBundle:Forum:listerAbonnesSujet }
+
+profil_lister_participants_sujet:
+    path: /forum/listerParticipantsSujet/{id}
+    defaults: { _controller: CiteUserBundle:Forum:listerParticipantsSujet }
+
+see_notification:
+    path: /forum/ConsulterNotification/{id}
+    defaults: { _controller: CiteUserBundle:Forum:consulterNotification }
+
+see_notification_number:
+    path: /forum/ConsulterNotificationNumber/{number}
+    defaults: { _controller: CiteUserBundle:Forum:consulterNotificationNum }
+
+lister_invitations:
+    path: /forum/listerInvitations
+    defaults: { _controller: CiteUserBundle:Forum:listerInvitations }
+
+accepter_invitation:
+    path: /forum/accepterInvitation/{id}
+    defaults: { _controller: CiteUserBundle:Forum:accepterInvitation }
+
+refuser_invitation:
+    path: /forum/refuserInvitation/{id}
+    defaults: { _controller: CiteUserBundle:Forum:refuserInvitation }

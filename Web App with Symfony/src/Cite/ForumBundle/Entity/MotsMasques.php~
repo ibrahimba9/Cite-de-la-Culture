@@ -1,0 +1,100 @@
+<?php
+
+namespace Cite\ForumBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MotsMasques
+ *
+ * @ORM\Table(name="mots_masques", indexes={@ORM\Index(name="fk_sujet_mots", columns={"id_sujet"})})
+ * @ORM\Entity
+ */
+class MotsMasques
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mot", type="string", length=100, nullable=false)
+     */
+    private $mot;
+
+    /**
+     * @var \Sujets
+     *
+     * @ORM\ManyToOne(targetEntity="Sujets", inversedBy="motsMasques")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_sujet", referencedColumnName="ID_Sujet")
+     * })
+     */
+    private $idSujet;
+
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set mot
+     *
+     * @param string $mot
+     *
+     * @return MotsMasques
+     */
+    public function setMot($mot)
+    {
+        $this->mot = $mot;
+
+        return $this;
+    }
+
+    /**
+     * Get mot
+     *
+     * @return string
+     */
+    public function getMot()
+    {
+        return $this->mot;
+    }
+
+    /**
+     * Set idSujet
+     *
+     * @param \Cite\ForumBundle\Entity\Sujets $idSujet
+     *
+     * @return MotsMasques
+     */
+    public function setIdSujet(\Cite\ForumBundle\Entity\Sujets $idSujet = null)
+    {
+        $this->idSujet = $idSujet;
+
+        return $this;
+    }
+
+    /**
+     * Get idSujet
+     *
+     * @return \Cite\ForumBundle\Entity\Sujets
+     */
+    public function getIdSujet()
+    {
+        return $this->idSujet;
+    }
+}

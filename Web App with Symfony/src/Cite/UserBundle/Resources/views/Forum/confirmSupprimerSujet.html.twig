@@ -1,0 +1,23 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Confirmer Suppression{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Voulez Vous Vraiment Supprimer ce Sujet?</h4>
+        <p><strong>Titre du Sujet:</strong>  {{ sujet.titre }}</p>
+        <table>
+            <tr>
+                <td><a href="{{ path('profil_forum_supprimer',{ 'id' : sujet.idSujet }) }}">Supprimer</a></td>
+                <td><a href="{{ path('profil_forum_sujets') }}">Annuler</a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+cite_forum:
+    resource: "@CiteForumBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cite_user:
+    resource: "@CiteUserBundle/Resources/config/routing.yml"
+    prefix:   /User
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

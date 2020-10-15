@@ -1,0 +1,58 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: user
+ * Date: 02/05/2019
+ * Time: 21:16
+ */
+
+namespace Cite\ForumBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AppreciationsMessages
+ *
+ * @ORM\Table(name="rating_sujet", indexes={@ORM\Index(name="fk_sujet_rating", columns={"ID_Sujet"}), @ORM\Index(name="fk_abonne_rating", columns={"ID_Abonne"})})
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
+ */
+class RatingSujet
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="Cite\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_Abonne", referencedColumnName="id", onDelete="CASCADE")
+     * })
+     */
+    private $idAbonne;
+
+    /**
+     * @var \Sujets
+     *
+     * @ORM\ManyToOne(targetEntity="Sujets")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_Sujet", referencedColumnName="ID_Sujet", onDelete="CASCADE")
+     * })
+     */
+    private $idSujet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rate", type="integer", nullable=true)
+     */
+    private $rate;
+
+
+}

@@ -1,0 +1,58 @@
+{
+    "name": "jojoee/leo-profanity",
+    "type": "library",
+    "description": "Profanity filter, based on Shutterstock dictionary",
+    "keywords": [
+        "curse",
+        "bad",
+        "profanity",
+        "swear",
+        "dirty",
+        "obscene",
+        "filter",
+        "clean",
+        "word",
+        "words",
+        "string",
+        "list"
+    ],
+    "homepage": "https://github.com/jojoee/leo-profanity-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nathachai Thongniran",
+            "email": "inid3a@gmail.com",
+            "homepage": "https://github.com/jojoee",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~5.6|~7.0"
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.6",
+        "phpunit/phpunit": "^5.7",
+        "squizlabs/php_codesniffer": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jojoee\\Library\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jojoee\\Library\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --coverage-text",
+        "phpcs": "phpcs -p --standard=ruleset.xml --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "phpcbf": "phpcbf -p --standard=ruleset.xml --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "phpmd": "phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
+        "check": "composer test && composer phpcs && composer phpmd"
+    },
+    "config": {
+        "sort-packages": true,
+        "bin-dir": "bin"
+    }
+}

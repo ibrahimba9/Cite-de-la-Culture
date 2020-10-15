@@ -1,0 +1,31 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Modifier un Sujet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <h1 id="titre">Modifier un Sujet</h1>
+    </div>
+
+    <div id="formsujet">
+        <h2>Ajouter un Nouveau Sujet</h2>
+        {{ form_start(form, { 'attr': {'class':''} } )}}
+        {{ form_errors(form) }}
+
+        <div>
+            <label>Choisir un Thème:</label><br/>
+            {{ form_widget(form.theme, { 'attr' : { 'class' : 'selectTheme' } }) }} <br/> <br/>
+            <label>Choisir un Titre:   </label>
+            {{ form_widget(form.titre, { 'attr' : { 'class' : '' } }) }}<br/>
+            {{ form_widget(form.valider, { 'attr' : { 'class' : '' } }) }}
+        </div>
+
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

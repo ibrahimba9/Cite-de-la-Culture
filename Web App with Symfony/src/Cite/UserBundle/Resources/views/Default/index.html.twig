@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block barremenu %}
+
+    <ul>
+        <li><a href="{{ path('cite_homepage') }}">Home</a></li>
+        <li><a href="#">Mon Profil</a></li>
+        <li><a href="#">Mes Clubs</a></li>
+        <li><a href="">Forum</a>
+            <ul class="dropdown">
+                <li><a href="{{ path('profil_forum_sujets') }}">Mes Sujets</a></li>
+                <li><a href="{{ path('profil_forum_suivi') }}">Mes Sujets Suivis</a></li>
+                <li><a href="{{ path('lister_invitations') }}">Invitations({{ nbrInvitations }})</a></li>
+            </ul>
+        </li>
+        <li data-href="{{ app.user.username }}" id="ongletNotif"><a href="#" id="countNotif" data-href="{{ countNS }}">Notifications({{ countNS }})</a>
+
+            <ul class="dropdown"  style="width: auto">
+                <div style="overflow-y: scroll; height:400px;" id="notifs">
+                {% for n in notifs %}
+                    {% if n.seen == 0 %}
+                        <div style="list-style-position:inside; border: 1px solid black;width: 400px;background-color: #24C2C7;">
+                            <li style="">
+                                <a onclick="decrement()" class="linkUnseen"  href="{{ path('see_notification', {'id' : n.id}) }}" style="font-size: 15px;"><u>{{ n.title }}</u></a>
+                            </li>
+                            <li>
+                                <a>{{ n.description }}</a>
+                            </li>
+                        </div>
+                    {% else %}
+                        <div style="list-style-position:inside; border: 1px solid black;width: 400px">
+                            <li style="">
+                                <a href="{{ path('see_notification', {'id' : n.id}) }}"><u>{{ n.title }}</u></a>
+                            </li>
+                            <li>
+                                <a>{{ n.description }}</a>
+                            </li>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                </div>
+            </ul>
+
+        </li>
+    </ul>
+
+
+{% endblock %}
+
+{% block body %}
+    <script
+            src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+            integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
+            crossorigin="anonymous">
+
+    </script>
+    {# Call NotificationsBundles's assets #}
+    {{ notifications_assets() }}
+    <script>
+        /**
+         * After calling notifications_assets() "pusher" is now available
+         * and you can use it this way
+         */
+
+            // select the channel you want to listen to
+        var channel = pusher.subscribe("notifications");// notifications channel
+        var count = $('#countNotif').attr('data-href');
+        var username = $('#ongletNotif').attr("data-href");
+        channel.bind("my-event", function(data) {
+            console.log('from notifications channel', data);
+            data.forEach(function(item){
+                let li = '<div style="list-style-position:inside; border: 1px solid black;width: 400px; background-color: #24C2C7;"><li><a onclick="decrement()" class="linkUnseen" href="forum/ConsulterNotificationNumber/'+item.number+'"><u>'+ item.title +'</u></a>  </li> <li><a>'+ item.description +'</a></li></div>';
+
+                var usernotif = String(item.username);
+                var user = String(username);
+                if(usernotif != user){
+                    count = $('#countNotif').attr('data-href');
+                    count++;
+                    $('#notifs').prepend(li);
+                    $('#countNotif').text("Notifications("+count+")");
+                    $('#countNotif').attr('data-href', count);
+                }
+
+            });
+
+        });
+
+
+        
+        function decrement() {
+            var nbr = $('#countNotif').attr('data-href');
+            nbr--;
+            $('#countNotif').attr('data-href', nbr);
+            $('#countNotif').text("Notifications("+nbr+")");
+        }
+    </script>
+
+{% endblock %}

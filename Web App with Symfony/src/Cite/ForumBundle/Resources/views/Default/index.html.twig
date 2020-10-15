@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <h1 id="titre">FORUM</h1>
+        <br/><br/>
+        <button id="button">Art</button>
+        <button id="button">Cinéma</button>
+        <button id="button">Culture</button>
+        <button id="button">Dance</button>
+        <button id="button">Exposition</button>
+        <button id="button">Litérature</button>
+        <button id="button">Musique</button>
+        <button id="button">Théâtre</button>
+        <br/><br/><br/><br/>
+    </div>
+
+
+    <div align="center">
+        <h4>Sujets Récents</h4>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <table style="border-color: transparent">
+            <tr>
+                <td>{{ form_widget(form.theme, { 'attr' : { 'placeholder' : 'Theme' } }) }}</td>
+                <td>{{ form_widget(form.titre, { 'attr' : { 'placeholder' : 'Titre' } }) }}</td>
+                <td>{{ form_widget(form.auteur, { 'attr' : { 'placeholder' : 'Auteur' } }) }}</td>
+                <td>{{ form_widget(form.Chercher, { 'attr' : { 'class' : '' } }) }}</td>
+            </tr>
+        </table>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+        <br/><br/>
+        <table id="liste">
+            <tr>
+                <th>
+                    Thème
+                </th>
+                <th width="40%">
+                    Titre
+                </th>
+                <th>
+                    Auteur
+                </th>
+                <th>
+                    Nombre de Messages
+                </th>
+                <th>
+                    Nombre de Participants
+                </th>
+                <th width="20%">
+                    Date de Création
+                </th>
+            </tr>
+            {% for s in liste %}
+                <tr>
+                    <td>{{ s.theme }}</td>
+                    <td><a href="{{ path('view_sujet', {'id' : s.idSujet, 'titre' : s.titre}) }}">{{ s.titre }}</a></td>
+                    <td>{{ s.idAbonne.username }}</td>
+                    <td>{{ s.nbrMessages }}</td>
+                    <td>{{ s.nbrParticipants }}</td>
+                    <td>{{ s.dateCreation|date('Y-m-d') }}</td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        <div align="center" style="margin-left: 60%">{{ knp_pagination_render(liste) }}</div>
+        <br/><br/>
+        {% if is_granted('ROLE_USER') %}
+            <a id="linkadd" href="{{ path('ajouter_sujet') }}">Ajouter un Nouveau Sujet >></a>
+        {% endif %}
+    </div>
+
+{% endblock %}

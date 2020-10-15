@@ -1,0 +1,74 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Mes Sujets{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Mes Sujets</h4>
+        <table id="liste">
+            <tr>
+                <th>
+                    Thème
+                </th>
+                <th width="40%">
+                    Titre
+                </th>
+                <th>
+                    Auteur
+                </th>
+                <th>
+                    Nombre de Messages
+                </th>
+                <th>
+                    Nombre de Participants
+                </th>
+                <th>
+                    Nombre de Suivis
+                </th>
+                <th width="20%">
+                    Date de Création
+                </th>
+                <th>
+                    Inviter
+                </th>
+                <th>
+                    Liste des Invitations
+                </th>
+                <th>
+                    Modifier
+                </th>
+                <th>
+                    Supprimer
+                </th>
+            </tr>
+            {% for s in liste %}
+                <tr>
+                    <td>{{ s.theme }}</td>
+                    <td><a href="{{ path('view_sujet', {'id' : s.idSujet, 'titre' : s.titre}) }}">{{ s.titre }}</a></td>
+                    <td>{{ s.idAbonne.username }}</td>
+                    <td>{{ s.nbrMessages }}</td>
+                    <td><a href="{{ path('profil_lister_participants_sujet',{'id':s.idSujet}) }}">{{ s.nbrParticipants }}</a></td>
+                    <td><a href="{{ path('profil_lister_abonnes_sujet', {'id' : s.idSujet}) }}">{{ s.nbrSuivi }}</a></td>
+                    <td>{{ s.dateCreation|date('Y-m-d') }}</td>
+                    <td><a href="{{ path('profil_forum_inviter',{'idSujet':s.idSujet}) }}">Inviter</a></td>
+                    <td><a href="{{ path('profil_lister_invites',{'id':s.idSujet}) }}">Lister</a></td>
+                    <td><a href="{{ path('profil_forum_modifier',{ 'id' : s.idSujet }) }}">Modifier</a></td>
+                    <td><a href="{{ path('profil_forum_confirm_supprimer',{ 'id' : s.idSujet }) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+
+        </table>
+        <div style="margin-left: 75%;">{{ knp_pagination_render(liste) }}</div>
+        <br/><br/>
+        {% if is_granted('ROLE_USER') %}
+            <a id="linkadd" href="{{ path('ajouter_sujet') }}">Ajouter un Nouveau Sujet >></a>
+        {% endif %}
+    </div>
+{% endblock %}

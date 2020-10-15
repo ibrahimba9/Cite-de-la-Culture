@@ -1,0 +1,38 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Inviter des Participants{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Liste des Sujets Suivis:</h4>
+        <table>
+            <tr>
+                <th>Theme</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Date de Création</th>
+                <th>Date de Suivi</th>
+                <th>Abandonner</th>
+            </tr>
+            {% for s in sujets %}
+                <tr>
+                    <td>{{ s.idSujet.theme }}</td>
+                    <td><a href="{{ path('view_sujet',{'id':s.idSujet.idSujet, 'titre':s.idSujet.titre}) }}">{{ s.idSujet.titre }}</a></td>
+                    <td>{{ s.idSujet.idAbonne.username }}</td>
+                    <td>{{ s.idSujet.dateCreation|date("Y-m-d") }}</td>
+                    <td>{{ s.dateSuivi|date('Y-m-d') }}</td>
+                    <td><a href="{{ path('profil_suivi_abandonner',{ 'id':s.idSujet.idSujet }) }}">Abandonner</a></td>
+                </tr>
+
+            {% endfor %}
+        </table>
+        <div align="center" style="margin-left: 60%">{{ knp_pagination_render(sujets) }}</div>
+    </div>
+{% endblock %}

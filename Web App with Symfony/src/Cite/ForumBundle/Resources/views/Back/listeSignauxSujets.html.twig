@@ -1,0 +1,75 @@
+{% extends'@CiteForum/Back/baseBack.html.twig' %}
+
+{% block title %}Liste des Sujets Signalés{% endblock %}
+
+{% block titrePage %}Liste des Sujets Signalés{% endblock %}
+
+{% block body %}
+    {<link rel="stylesheet" href="{{ asset('cssBack/forum.css') }}" />}
+
+    <input type="text" placeholder="Recherche..." class="form-control" id="myInput"/> <br/>
+    <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+        <thead>
+        <tr>
+            <th>Username de celui qui a signalé</th>
+            <th>Titre du sujet signalé</th>
+            <th>Auteur</th>
+            <th>Cause du signal</th>
+            <th>Date du signal</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        {% for signal in signaux %}
+            <tr class="gradeX">
+                <td>{{ signal.idAbonne.username }}</td>
+                <td>{{ signal.idSujet.titre }}</td>
+                <td>{{ signal.idSujet.idAbonne.username }}</td>
+                <td>{{ signal.description }}</td>
+                <td>{{ signal.dateSignal|date("d-m-Y") }}</td>
+                <td class="actions">
+
+                        <ul>
+                            <li><a onclick="showDeleteSubjectSignaleModal({{ signal.idSujet.idSujet }})" id="linkDelSuj" href="#" data-href="{{ path('back_delete_sujet_signale', {'id' : signal.idSujet.idSujet}) }}">Supprimer Sujet</a></li>
+                            <li><a onclick="showDeleteSignalSubjectModal({{ signal.id }})" id="linkDelSigSub" href="#" data-href="{{ path('back_delete_signal_sujet', {'id' : signal.id}) }}">Supprimer Signal</a></li>
+                        </ul>
+
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-left: 85%;">{{ knp_pagination_render(signaux) }}</div>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="hTitre">Supprimer ce Sujet?</h2>
+            </div>
+            <div class="modal-body">
+                <h2 id="hContent">Etes-vous sûr de vouloir supprimer ce Sujet du Forum?</h2>
+            </div>
+            <div class="modal-footer">
+                <table style="background-color: transparent;">
+                    <tr style="background-color: transparent;">
+                        <td>
+                            <a id="linkConfirm">Confirmer</a>
+                        </td>
+                        <td>
+                            <a id="linkAnnuler" href="#">Annuler</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('js/ForumBack.js') }}"></script>
+    <script src="{{ asset('js/ForumBackDeleteModal.js') }}"></script>
+{% endblock %}

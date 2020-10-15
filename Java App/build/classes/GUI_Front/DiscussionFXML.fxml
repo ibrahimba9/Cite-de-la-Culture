@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="494.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI_Front.DiscussionFXMLController">
+   <children>
+      <ScrollPane fx:id="msgscontainer" prefHeight="366.0" prefWidth="627.0">
+        <content>
+          <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="4000.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0">
+               <children>
+                  <Text layoutX="26.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre:" />
+                  <Text layoutX="404.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thème:" />
+                  <Text layoutX="404.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créé le:" />
+                  <Text layoutX="28.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Créé par:" />
+                  <Text fx:id="titre" layoutX="64.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="306.13671875" />
+                  <Text fx:id="auteur" layoutX="91.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="115.13671875" />
+                  <Text fx:id="theme" layoutX="460.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="101.13671875" />
+                  <Text fx:id="date" layoutX="456.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="108.13671875" />
+                  <Line endX="468.0" layoutX="127.0" layoutY="148.0" startX="-100.0" />
+                  <VBox fx:id="boxmsgs" layoutX="28.0" layoutY="148.0" prefHeight="200.0" prefWidth="539.0" />
+                  <Button fx:id="btnsuivre" layoutX="27.0" layoutY="105.0" mnemonicParsing="false" onAction="#suivreDiscussion" text="Suivre" />
+                  <Button fx:id="btnsignaler" layoutX="503.0" layoutY="105.0" mnemonicParsing="false" onAction="#signalerSujet" text="Signaler" />
+                  <Button fx:id="btnquit" layoutX="539.0" layoutY="15.0" mnemonicParsing="false" onAction="#quitterDiscussion" text="Quitter" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <TextArea fx:id="tamsg" layoutX="35.0" layoutY="379.0" prefHeight="93.0" prefWidth="452.0" />
+      <Button fx:id="publierb" layoutX="497.0" layoutY="409.0" mnemonicParsing="false" onAction="#publiermessage" prefHeight="34.0" prefWidth="95.0" text="Pubiler" />
+   </children>
+</AnchorPane>

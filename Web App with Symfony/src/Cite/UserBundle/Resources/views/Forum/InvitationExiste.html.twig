@@ -1,0 +1,23 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Inviter des Participants{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h2>L'invitation existe!</h2>
+        <b/><br/>
+        <h4>Vous avez déja envoyé une invitation à {{ invitation.idInvite.username }} à participer à votre sujet "{{ invitation.idSujet.titre }}" le {{ invitation.dateInvitation|date("d-m-Y") }}</h4>
+        <table>
+            <tr>
+                <td><a href="{{ path('profil_forum_inviter', {'idSujet' : invitation.idSujet.idSujet}) }}">Annuler</a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Liste des Invités{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Liste des Invités</h4>
+        <p><strong>Titre du Sujet:</strong>  {{ titre }}</p>
+        </table> <br/>
+        <table id="liste">
+            <tr>
+                <th>Username</th>
+                <th>Etat</th>
+                <th>Date d'Invitation</th>
+                <th>Annuler l'Invitation</th>
+            </tr>
+            {% for i in liste %}
+                <tr>
+                    <td>{{ i.idInvite.username }}</td>
+                    <td>{{ i.etat }}</td>
+                    <td>{{ i.dateInvitation|date('Y-m-d') }}</td>
+                    <td><a href="{{ path('profil_invitation_confirm_annuler', {'id' : i.id}) }}" >Annuler</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

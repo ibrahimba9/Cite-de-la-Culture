@@ -1,0 +1,36 @@
+{% extends'@CiteForum/Back/baseBack.html.twig' %}
+
+{% block title %}Bannissement{% endblock %}
+
+{% block titrePage %}Liste des Sujets{% endblock %}
+
+{% block body %}
+    <input type="text" placeholder="Recherche..." class="form-control" id="myInput"/> <br/>
+    <table class="table table-bordered table-striped mb-none" id="datatable-editable">
+        <thead>
+        <tr>
+            <th>Thème</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Date Création</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody id="myTable">
+        {% for s in sujets %}
+            <tr class="gradeX">
+                <td>{{ s.theme }}</td>
+                <td><a href="{{  path('view_sujet', {'id' : s.idSujet, 'titre' : s.titre})  }}">{{ s.titre }}</a></td>
+                <td>{{ s.idAbonne.username }}</td>
+                <td>{{ s.dateCreation|date('Y-m-d') }}</td>
+                <td class="actions">
+                    <a href="{{ path('back_ban_participants', {'id' : s.idSujet}) }}">Lister Participants</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div style="margin-left: 85%;">{{ knp_pagination_render(sujets) }}</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('js/ForumBack.js') }}"></script>
+{% endblock %}

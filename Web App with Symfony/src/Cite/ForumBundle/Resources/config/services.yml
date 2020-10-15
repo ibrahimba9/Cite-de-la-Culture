@@ -1,0 +1,4 @@
+services:
+#    cite_forum.example:
+#        class: Cite\ForumBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}Signaler un Sujet{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <h1 id="titre">Signaler un Sujet!</h1>
+    </div>
+
+    <div id="formsujet">
+        <table>
+            <tr>
+                <th>Titre</th>
+                <th>Theme</th>
+                <th>Auteur</th>
+                <th>Date de Création</th>
+            </tr>
+            <tr>
+                <td>{{ sujet.titre }}</td>
+                <td>{{ sujet.theme }}</td>
+                <td>{{ sujet.idAbonne.username }}</td>
+                <td>{{ sujet.dateCreation|date("Y-m-d") }}</td>
+            </tr>
+        </table>
+        <br/>
+        {{ form_start(form, { 'attr': {'class':''} } )}}
+        {{ form_errors(form) }}
+            <table width="50%">
+                <tr>
+                    <td>Description</td>
+                    <td>{{ form_widget(form.description, { 'attr' : { 'class' : '' } }) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_widget(form.Valider, { 'attr' : { 'class' : '' } }) }}</td>
+                    <td>{{ form_widget(form.Annuler, { 'attr' : { 'class' : '' } }) }}</td>
+                </tr>
+            </table>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

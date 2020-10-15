@@ -1,0 +1,27 @@
+{% extends'@CiteForum/Back/baseBack.html.twig' %}
+
+{% block title %}Liste des Sujets{% endblock %}
+
+{% block titrePage %}Liste des Sujets{% endblock %}
+
+{% block body %}
+    {<link rel="stylesheet" href="{{ asset('cssBack/forum.css') }}" />}
+
+
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <table >
+            <tr >
+                <td><h4>Saisir un mot à muter:</h4></td>
+                <td>{{ form_widget(form.mot) }}</td>
+            </tr>
+        </table>
+        {{ form_widget(form.Valider) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+
+
+    <script src="{{ asset('js/ForumBack.js') }}"></script>
+    <script src="{{ asset('js/ForumBackDeleteModal.js') }}"></script>
+
+{% endblock %}

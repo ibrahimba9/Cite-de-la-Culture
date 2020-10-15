@@ -1,0 +1,34 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Annuler Invitation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Voulez Vous Vraiment Annuler cette Invitation?</h4>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Sujet</th>
+                <th>Date d'Invitation</th>
+            </tr>
+            <tr>
+                <td>{{ invitation.idInvite.username }}</td>
+                <td>{{ invitation.idSujet.titre }}</td>
+                <td>{{ invitation.dateInvitation|date('Y-m-d') }}</td>
+            </tr>
+        </table> <br/>
+        <table>
+            <tr>
+                <td><a href="{{ path('profil_invitation_annuler',{ 'id' : invitation.id }) }}">Annuler l'Invitation</a></td>
+                <td><a href="{{ path('profil_forum_sujets') }}">Retour</a></td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

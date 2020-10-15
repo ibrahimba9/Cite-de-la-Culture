@@ -1,0 +1,3 @@
+cite_forum_homepage:
+    path:     /
+    defaults: { _controller: CiteForumBundle:Default:index }

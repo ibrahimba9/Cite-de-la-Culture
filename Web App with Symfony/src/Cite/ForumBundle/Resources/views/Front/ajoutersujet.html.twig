@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter un nouveau Forum{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    <div align="center">
+        <h1 id="titre">FORUM</h1>
+    </div>
+
+    <div id="formsujet">
+
+        {{ include('@CiteForum/Front/formSujet.html.twig') }}
+
+    </div>
+{% endblock %}

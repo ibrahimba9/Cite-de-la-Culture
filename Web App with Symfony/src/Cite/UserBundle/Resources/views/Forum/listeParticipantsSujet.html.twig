@@ -1,0 +1,29 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Mes Sujets{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Liste des Abonnés qui participent à votre Sujet</h4>
+        <p><strong>Titre du Sujet:</strong>  {{ sujet.titre }}</p>
+        </table> <br/>
+        <table id="liste" style="width: 20%">
+            <tr>
+                <th style="text-align:center">Username</th>
+            </tr>
+            {% for l in liste %}
+                <tr>
+                    <td style="text-align:center">{{ l.username }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

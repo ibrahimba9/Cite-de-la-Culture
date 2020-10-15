@@ -1,0 +1,190 @@
+#button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #2F4F4F;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #D3D3D3;
+}
+
+#button:hover {background-color: #6B8F90}
+
+#button:active {
+    background-color: #6B8F90;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#titre{
+    font-family: "Times New Roman";
+    font-weight: bold;
+    color: #708090;
+   font-size: 80px;
+}
+
+#liste {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#tops{
+    float: right;
+    margin-right: 10px;
+}
+
+#linkadd{
+    color: #0000F0;
+}
+#linkadd:hover{
+    color: #0062cc;
+}
+
+#formsujet{
+    margin-left: 150px;
+}
+
+.formpub{
+    width: 500px;
+    height: 100px;
+    background-color: whitesmoke;
+}
+
+#lienLike{
+    color: #28a745;
+}
+
+#lienDislike{
+    color: red;
+}
+
+#messagecellule tr:nth-child{
+    background-color: white;
+}
+
+#messagesList{
+    border-collapse: collapse;
+}
+#messagesList td{
+    border-bottom: 1px solid #ddd;
+}
+
+#messagesList tr:hover{
+    background-color: #f5f5f5;
+}
+
+/*lien Suivre*/
+#linkSuivre:link, #linkSuivre:visited {
+    background-color: darkblue;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#linkSuivre:hover, #linkSuivre:active {
+    background-color: cornflowerblue;
+}
+
+/*lien Signaler*/
+#myBtn:link, #myBtn:visited {
+    background-color: darkred;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#myBtn:hover, #myBtn:active {
+    background-color: red;
+}
+
+/*Style Modal Signal*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 400px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:100}
+    to {top:0; opacity:100}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: steelblue;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: steelblue;
+    color: white;
+}

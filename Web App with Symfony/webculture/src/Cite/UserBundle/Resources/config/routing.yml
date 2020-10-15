@@ -1,0 +1,3 @@
+cite_user_homepage:
+    path:     /
+    defaults: { _controller: CiteUserBundle:Default:index }

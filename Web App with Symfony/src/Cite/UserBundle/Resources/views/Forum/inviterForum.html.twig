@@ -1,0 +1,44 @@
+{% extends '@CiteUser/Default/index.html.twig' %}
+
+{% block title %}Inviter des Participants{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link  href="{{ asset('css/forum.css') }}" rel="stylesheet"  />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div align="center">
+        <h4>Chercher un Abonné:</h4>
+        {{ form_start(form, { 'attr': {'class':''} } )}}
+        {{ form_errors(form) }}
+        <table>
+            <tr>
+                <td><h5>Username</h5></td>
+                <td>{{ form_widget(form.username, { 'attr' : { 'class' : '' } }) }}</td>
+                <td>{{ form_widget(form.Chercher, { 'attr' : { 'class' : '' } }) }}</td>
+            </tr>
+        </table>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+        {% if abonnes is empty %}
+            <h2>Aucun résultat!</h2>
+        {% else %}
+            <h2>Liste des abonnés:</h2>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>inviter</th>
+            </tr>
+            {% for a in abonnes %}
+                <tr>
+                    <th>{{ a.username }}</th>
+                    <th><a href="{{ path('profil_sujet_inviter',{'idAbonne':a.id , 'idSujet':idSujet}) }}">inviter</a></th>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+{% endblock %}

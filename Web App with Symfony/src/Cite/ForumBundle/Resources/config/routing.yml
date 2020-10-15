@@ -1,0 +1,140 @@
+cite_forum_homepage:
+    path:     /
+    defaults: { _controller: CiteForumBundle:Default:index }
+
+ajouter_sujet:
+  path: /ajouterSujet
+  defaults: { _controller: CiteForumBundle:Sujet:ajouter }
+
+view_sujet:
+  path: /sujet/{id}/{titre}
+  defaults: { _controller: CiteForumBundle:Sujet:afficher }
+
+vote_message:
+  path: /sujet/voteMessage/{idmessage}/{vote}
+  defaults: { _controller: CiteForumBundle:Sujet:vote }
+
+signal_message:
+  path: /signalerCommentaire/{id}
+  defaults: { _controller: CiteForumBundle:Sujet:signalerCommentaire }
+
+supprimer_message:
+  path: /supprimer/{id}
+  defaults: { _controller: CiteForumBundle:Sujet:supprimer }
+
+suivre_sujet:
+  path: /suivre/{id}
+  defaults: { _controller: CiteForumBundle:Sujet:suivre }
+
+signaler_sujet:
+  path: /signaler/{id}
+  defaults: { _controller: CiteForumBundle:Sujet:signalerSujet }
+
+back_sujet_lister:
+  path: /Back/listeSujets
+  defaults: { _controller: CiteForumBundle:SujetBack:lister }
+
+back_sujet_confirm_delete_sujet:
+  path: /Back/confirmerSuppression/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:confirmDeleteSujet }
+
+back_sujet_Bannissement:
+  path: /Back/Bannissement/Sujets
+  defaults: { _controller: CiteForumBundle:SujetBack:listerBan }
+
+back_ban_participants:
+  path: /Back/Bannissement/Participants/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:listerPartBan }
+
+back_confirm_bannir:
+  path: /Back/ConfirmBannir/{idSujet}/{idAbonne}
+  defaults: { _controller: CiteForumBundle:SujetBack:confirmBannir }
+
+back_cancel_bannir:
+  path: /Back/AnnulerBannir/{idSujet}/{idAbonne}
+  defaults: { _controller: CiteForumBundle:SujetBack:cancelBannir }
+
+back_sujets_Signales:
+  path: /Back/Signaux/Sujets
+  defaults: { _controller: CiteForumBundle:SujetBack:listerSujetsSignales }
+
+back_delete_sujet_signale:
+  path: /Back/supprimerSujetSignale/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:deleteSujetSignale }
+
+back_delete_signal_sujet:
+  path: /Back/supprimerSignalSujet/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:deleteSignalSujet }
+
+back_messages_Signales:
+  path: /Back/Signaux/Messages
+  defaults: { _controller: CiteForumBundle:SujetBack:listerMessagesSignales }
+
+back_delete_message_signale:
+  path: /Back/supprimerMessageSignale/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:deleteMessageSignale }
+
+back_delete_signal_message:
+  path: /Back/supprimerSignalMessage/{id}
+  defaults: { _controller: CiteForumBundle:SujetBack:deleteSignalMessage }
+
+
+mobile_add_sujet:
+  path: /Mobile/addSujet
+  defaults: { _controller: CiteForumBundle:SujetMobile:ajouter }
+
+mobile_lister_sujets:
+  path: /Mobile/listeSujets
+  defaults: { _controller: CiteForumBundle:SujetMobile:lister }
+
+mobile_lister_mes_sujets:
+  path: /Mobile/listerMesSujets
+  defaults: { _controller: CiteForumBundle:SujetMobile:listerMesSujets }
+
+mobile_afficher_sujet:
+  path: /Mobile/AfficherSujet
+  defaults: { _controller: CiteForumBundle:SujetMobile:afficherSujet }
+
+mobile_voter_message:
+  path: /Mobile/Voter
+  defaults: { _controller: CiteForumBundle:SujetMobile:voter }
+
+mobile_ajouter_message:
+  path: /Mobile/AjouterMessage
+  defaults: { _controller: CiteForumBundle:SujetMobile:ajouterMessage }
+
+mobile_modifier_message:
+  path: /Mobile/ModifierMessage
+  defaults: { _controller: CiteForumBundle:SujetMobile:modifierMessage }
+
+mobile_supprimer_message:
+  path: /Mobile/SupprimerMessage
+  defaults: { _controller: CiteForumBundle:SujetMobile:supprimerMessage }
+
+mobile_modifier_sujet:
+  path: /Mobile/ModifierSujet
+  defaults: { _controller: CiteForumBundle:SujetMobile:modifierSujet }
+
+mobile_supprimer_sujet:
+  path: /Mobile/SupprimerSujet
+  defaults: { _controller: CiteForumBundle:SujetMobile:supprimerSujet }
+
+mobile_chercher_sujet:
+  path: /Mobile/Chercher
+  defaults: { _controller: CiteForumBundle:SujetMobile:chercher }
+
+mobile_noter_sujet:
+  path: /Mobile/Noter
+  defaults: { _controller: CiteForumBundle:SujetMobile:ajouterRate }
+
+mobile_note_sujet:
+  path: /Mobile/getNote
+  defaults: { _controller: CiteForumBundle:SujetMobile:getRate }
+
+mobile_mynote_sujet:
+  path: /Mobile/getMyNote
+  defaults: { _controller: CiteForumBundle:SujetMobile:myNote }
+
+mobile_get_user:
+  path: /Mobile/getUser
+  defaults: { _controller: CiteForumBundle:SujetMobile:loginUser }
